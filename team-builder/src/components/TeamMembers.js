@@ -5,6 +5,11 @@ const StyledHeaders = styled.div`
   width: 40%;
   margin: 1.6rem 0;
 
+  h1 {
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 1rem;
+  }
+
   div {
     display: flex;
     justify-content: space-between;
@@ -32,17 +37,18 @@ const StyledHeaders = styled.div`
   }
 `;
 
-const TeamMembers = ({ teamMembersData }) => {
+const TeamMembers = ({ teamMembersData, onEdit }) => {
   return (
     <StyledHeaders>
+      <h1>Our Current Team</h1>
       {teamMembersData.map(teamMember => (
-        <div>
-          <h4
-            key={teamMember.id}
+        <div key={teamMember.id}>
+          <h4>{teamMember.name} is a {teamMember.role}</h4>
+          <button
+            onClick={() => onEdit(teamMember.id)}
           >
-            {teamMember.name} is a {teamMember.role}
-          </h4>
-          <button>Edit</button>
+            Edit
+          </button>
         </div>
       ))}
     </StyledHeaders>

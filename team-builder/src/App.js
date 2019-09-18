@@ -10,6 +10,12 @@ import Form from './components/Form/Form';
 function App() {
   const [teamMembersList, setTeamMembersList] = useState(initialTeamMembers);
   const [teamMemberForm, setTeamMemberForm] = useState(initialTeamMemberForm);
+  const [memberToEdit, setMemberToEdit] = useState(initialTeamMemberForm);
+
+  const handleMemberToEdit = (id) => {
+    const currentMember = teamMembersList.find(member => member.id === id)
+    setMemberToEdit(currentMember);
+  }
 
   const handleNameChange = e => {
     setTeamMemberForm({
@@ -58,7 +64,10 @@ function App() {
         onRoleChange={handleRoleChange}
         onFormSubmit={handleFormSubmit}
       />
-      <TeamMembers teamMembersData={teamMembersList} />
+      <TeamMembers
+        teamMembersData={teamMembersList}
+        onEdit={handleMemberToEdit}
+      />
     </div>
   );
 }
