@@ -37,20 +37,22 @@ const StyledHeaders = styled.div`
   }
 `;
 
-const TeamMembers = ({ teamMembersData, onEdit }) => {
+const TeamMembers = ({ teamMembersData, onMemberEdit }) => {
   return (
     <StyledHeaders>
       <h1>Our Current Team</h1>
+
       {teamMembersData.map(teamMember => (
         <div key={teamMember.id}>
           <h4>{teamMember.name} is a {teamMember.role}</h4>
           <button
-            onClick={() => onEdit(teamMember.id)}
+            onClick={() => onMemberEdit(teamMember.id)}
           >
             Edit
           </button>
         </div>
       ))}
+
     </StyledHeaders>
   );
 };

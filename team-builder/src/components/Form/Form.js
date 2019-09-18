@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { StyledForm } from './FormStyles';
 
 const Form = props => {
-  const { name, email, role } = props.teamMembersData;
-  const { onNameChange, onEmailChange, onRoleChange, onFormSubmit } = props;
+  const { name, email, role, setTeamMemberForm } = props.teamMembersData;
+  const { memberToEdit } = props;
+  const { onInputChange, onFormSubmit } = props;
+
+  useEffect(() => {
+    if (memberToEdit) {
+      setTeamMemberForm(memberToEdit);
+    }
+  })
 
   const isDisabled = () => {
     return !name || !email || !role;
@@ -17,7 +24,8 @@ const Form = props => {
         type='text'
         id='nameInput'
         value={name}
-        onChange={onNameChange}
+        onChange={onInputChange}
+        name="name"
       />
 
       <label htmlFor='emailInput'>Email</label>
@@ -25,7 +33,8 @@ const Form = props => {
         type='text'
         id='emailInput'
         value={email}
-        onChange={onEmailChange}
+        onChange={onInputChange}
+        name="email"
       />
 
       <label htmlFor='roleInput'>Role</label>
@@ -33,7 +42,8 @@ const Form = props => {
         type='text'
         id='roleInput'
         value={role}
-        onChange={onRoleChange}
+        onChange={onInputChange}
+        name="role"
       />
 
       <button

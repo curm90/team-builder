@@ -12,34 +12,15 @@ function App() {
   const [teamMemberForm, setTeamMemberForm] = useState(initialTeamMemberForm);
   const [memberToEdit, setMemberToEdit] = useState(initialTeamMemberForm);
 
+  const handleInputChange = e => {
+    e.preventDefault();
+    setTeamMemberForm({ ...teamMemberForm, [e.target.name]: e.target.value })
+  }
+
   const handleMemberToEdit = (id) => {
     const currentMember = teamMembersList.find(member => member.id === id)
     setMemberToEdit(currentMember);
   }
-
-  const handleNameChange = e => {
-    setTeamMemberForm({
-      name: e.target.value,
-      email: teamMemberForm.email,
-      role: teamMemberForm.role
-    });
-  };
-
-  const handleEmailChange = e => {
-    setTeamMemberForm({
-      name: teamMemberForm.name,
-      email: e.target.value,
-      role: teamMemberForm.role
-    });
-  };
-
-  const handleRoleChange = e => {
-    setTeamMemberForm({
-      name: teamMemberForm.name,
-      email: teamMemberForm.email,
-      role: e.target.value
-    });
-  };
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -58,15 +39,14 @@ function App() {
     <div className='App'>
       <h2>Sign up to become a member of our team!</h2>
       <Form
-        teamMembersData={teamMemberForm}
-        onNameChange={handleNameChange}
-        onEmailChange={handleEmailChange}
-        onRoleChange={handleRoleChange}
+        teamMembersData={{ teamMemberForm, setTeamMemberForm }}
+        memberToEdit={memberToEdit}
         onFormSubmit={handleFormSubmit}
+        onInputChange={handleInputChange}
       />
       <TeamMembers
         teamMembersData={teamMembersList}
-        onEdit={handleMemberToEdit}
+        onMemberEdit={handleMemberToEdit}
       />
     </div>
   );
