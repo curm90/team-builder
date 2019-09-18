@@ -3,7 +3,7 @@ import uuid from 'uuid';
 import './App.css';
 
 import TeamMembers from './components/TeamMembers';
-import Form from './components/Form';
+import Form from './components/Form/Form';
 
 const initialTeamMembers = [
   {
@@ -69,6 +69,7 @@ function App() {
 
   return (
     <div className='App'>
+      <h2>Sign up to become a member of our team!</h2>
       <Form
         teamMembersData={teamMemberForm}
         onNameChange={handleNameChange}

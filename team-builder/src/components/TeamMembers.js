@@ -1,12 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledHeaders = styled.h4`
+  font-size: 1.4rem;
+  padding: 1rem 0;
+  margin: 0;
+`;
 
 const TeamMembers = ({ teamMembersData }) => {
   return (
     <div>
       {teamMembersData.map(teamMember => (
-        <h5 key={teamMember.id}>
+        <StyledHeaders key={teamMember.id}>
           {teamMember.name} is a {teamMember.role}
-        </h5>
+        </StyledHeaders>
       ))}
     </div>
   );
