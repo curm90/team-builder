@@ -39,7 +39,7 @@ function App() {
     <div className='App'>
       <h2>Sign up to become a member of our team!</h2>
       <Form
-        teamMembersData={{ teamMemberForm, setTeamMemberForm }}
+        teamMembersData={teamMemberForm}
         memberToEdit={memberToEdit}
         onFormSubmit={handleFormSubmit}
         onInputChange={handleInputChange}

@@ -3,15 +3,9 @@ import React, { useEffect } from 'react';
 import { StyledForm } from './FormStyles';
 
 const Form = props => {
-  const { name, email, role, setTeamMemberForm } = props.teamMembersData;
+  const { name, email, role, } = props.teamMembersData;
   const { memberToEdit } = props;
   const { onInputChange, onFormSubmit } = props;
-
-  useEffect(() => {
-    if (memberToEdit) {
-      setTeamMemberForm(memberToEdit);
-    }
-  })
 
   const isDisabled = () => {
     return !name || !email || !role;
