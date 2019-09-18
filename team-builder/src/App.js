@@ -2,29 +2,10 @@ import React, { useState } from 'react';
 import uuid from 'uuid';
 import './App.css';
 
+import { initialTeamMemberForm, initialTeamMembers } from './components/data';
+
 import TeamMembers from './components/TeamMembers';
 import Form from './components/Form/Form';
-
-const initialTeamMembers = [
-  {
-    id: uuid(),
-    name: 'John',
-    email: 'example1@gmail.com',
-    role: 'Backend Engineer'
-  },
-  {
-    id: uuid(),
-    name: 'Dave',
-    email: 'example@gmail.com',
-    role: 'Front end developer'
-  }
-];
-
-const initialTeamMemberForm = {
-  name: '',
-  email: '',
-  role: ''
-};
 
 function App() {
   const [teamMembersList, setTeamMembersList] = useState(initialTeamMembers);
